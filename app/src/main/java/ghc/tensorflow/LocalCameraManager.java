@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.hardware.Camera;
-import android.hardware.Camera.Size;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
@@ -50,7 +49,7 @@ public class LocalCameraManager implements SurfaceHolder.Callback {
     private int mCameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
     private Camera.Parameters mParameters;
 
-    private IOrientationEventListener orienListener;
+//    private IOrientationEventListener orienListener;
     private Lock mLock = new ReentrantLock();                          // 锁对象
 
     private Activity mActivity;
@@ -75,7 +74,7 @@ public class LocalCameraManager implements SurfaceHolder.Callback {
         Log.d(TAG, "[LocalCameraManager()] >> create.");
         mSurfaceview = surfaceView;
         mActivity = activity;
-        orienListener = new IOrientationEventListener(mActivity);
+//        orienListener = new IOrientationEventListener(mActivity);
         mHolder = mSurfaceview.getHolder();
         mHolder.addCallback(this);
     }
@@ -119,9 +118,9 @@ public class LocalCameraManager implements SurfaceHolder.Callback {
             mCamera = getCamera(mCameraId);
         }
 
-        if (orienListener != null) {
-            orienListener.enable();
-        }
+//        if (orienListener != null) {
+//            orienListener.enable();
+//        }
 
         try {
             Log.d(TAG, "[startPreview] >> setCameraParameters.");
@@ -138,9 +137,9 @@ public class LocalCameraManager implements SurfaceHolder.Callback {
      * 可能是意外停止相机 释放资源
      */
     public void stop() {
-        if (orienListener != null) {
-            orienListener.disable();
-        }
+//        if (orienListener != null) {
+//            orienListener.disable();
+//        }
         releaseCamera();
     }
 
@@ -192,6 +191,7 @@ public class LocalCameraManager implements SurfaceHolder.Callback {
                     mParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);  //设置自动对焦
                 }
             }
+            mParameters.setRotation(90);
             mCamera.setParameters(mParameters);
         } else {
             Log.e(TAG, "[setCameraParameters] >> mCamera == null!!");
@@ -300,11 +300,11 @@ public class LocalCameraManager implements SurfaceHolder.Callback {
                 rotation = (info.orientation + orientation) % 360;
             }
             if (null != mCamera) {
-                Camera.Parameters parameters = mCamera.getParameters();
+//                Camera.Parameters parameters = mCamera.getParameters();
                 // 不随手表转动改变方向，要不然会导致图片旋转90°
-                parameters.setRotation(rotation);
+//                parameters.setRotation(80);
                 Log.d(TAG, "rotation: " + rotation);
-                mCamera.setParameters(parameters);
+//                mCamera.setParameters(parameters);
             }
         }
     }
