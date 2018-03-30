@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ghc.tensorflow.RecActivity">
+    tools:context="ghc.tensorflow.CameraMainActivity">
 
     <SurfaceView
         android:id="@+id/surfaceView"
@@ -15,8 +15,8 @@
 
     <Button
         android:id="@+id/btn_takePic"
-        android:layout_width="90px"
-        android:layout_height="90px"
+        android:layout_width="180px"
+        android:layout_height="180px"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@mipmap/btn_takepic" />

@@ -171,7 +171,7 @@ public class LocalCameraManager implements SurfaceHolder.Callback {
             mParameters = mCamera.getParameters();
             mParameters.setPictureSize(PREVIEW_SIZE_WIDTH, PREVIEW_SIZE_HEIGHT);
             mParameters.setPreviewSize(PREVIEW_SIZE_WIDTH, PREVIEW_SIZE_HEIGHT);
-            List<Size> videoSize = mParameters.getSupportedVideoSizes();
+            /*List<Size> videoSize = mParameters.getSupportedVideoSizes();
             for (int i = 0; i < videoSize.size(); i++) {
                 Log.d(TAG, "getSupportedVideoSizes : width " + videoSize.get(i).width + " ;height " + videoSize.get(i).height);
             }
@@ -184,7 +184,7 @@ public class LocalCameraManager implements SurfaceHolder.Callback {
             List<Size> preSize = mParameters.getSupportedPreviewSizes();
             for (int i = 0; i < preSize.size(); i++) {
                 Log.d(TAG, "getSupportedPreviewSizes : width " + preSize.get(i).width + " ;height " + preSize.get(i).height);
-            }
+            }*/
 
             List<String> focusModes = mParameters.getSupportedFocusModes();
             if (focusModes != null && focusModes.size() > 0) {
